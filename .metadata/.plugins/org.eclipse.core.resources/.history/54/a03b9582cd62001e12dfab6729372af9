@@ -1,0 +1,8 @@
+package com.actividad.superhero.entity.services;
+
+import com.actividad.superhero.entity.models.Tienen;
+
+public interface ITienenService {
+	public Tienen get(long id);
+	public Tienen getAll();
+}

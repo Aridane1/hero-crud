@@ -1,0 +1,43 @@
+.card{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: fit-content;
+    padding: 15px;
+}
+
+.card-content{
+    position: relative;
+    top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-btn{
+    display: flex;
+    gap: 16 px;
+}
+
+.card-btn{
+    padding: 10px;
+    border-radius: 5px;
+    background: rgb(245, 75, 75);
+}
+.container-svg-update{
+    display: flex;
+    width: 20px;
+    cursor: pointer;
+}
+
+ion-card-title{
+    display: flex;
+    justify-content: space-between;
+}
+svg{
+    cursor: pointer;
+}
+h1::first-letter {
+    text-transform: capitalize;
+    font-size: xx-large;
+}

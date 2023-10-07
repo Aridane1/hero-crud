@@ -1,0 +1,48 @@
+body{
+  background-color: white;
+}
+.form-container{
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+
+#container{
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  top:3rem;
+  gap: 1rem;
+  justify-content: center; 
+  height: 495px; 
+  overflow-y: scroll; 
+}
+
+
+button{
+  position: relative;
+  width: 6rem;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgb(245, 75, 75);
+}
+
+@media only screen and (min-width:375px) {
+  button{
+    left: 15px;
+    bottom: 25px;
+  }
+}
+
+@media only screen and (max-width:768px) {
+
+  #container{
+    flex-direction: column;
+    flex-flow: wrap;
+    height: 700px; 
+    overflow-y: scroll; 
+  }
+  
+}
+

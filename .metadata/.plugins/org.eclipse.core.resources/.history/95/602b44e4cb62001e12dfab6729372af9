@@ -1,0 +1,51 @@
+package com.actividad.superhero.entity.models;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
+@Embeddable
+public class SuperHeroKey {
+
+    @Column(name = "id_hero")
+    long idHero;
+    
+    @Column(name = "id_power")
+    long idPower;
+
+	public long getIdHero() {
+		return idHero;
+	}
+
+	public void setIdHero(long idHero) {
+		this.idHero = idHero;
+	}
+
+	public long getIdPower() {
+		return idPower;
+	}
+
+	public void setIdPower(long idPower) {
+		this.idPower = idPower;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idHero, idPower);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SuperHeroKey other = (SuperHeroKey) obj;
+		return idHero == other.idHero && idPower == other.idPower;
+	}
+    
+}

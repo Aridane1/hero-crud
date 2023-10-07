@@ -1,0 +1,11 @@
+package com.actividad.superhero.entity.dao;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.actividad.superhero.entity.models.Power;
+
+public interface IPowerDao extends CrudRepository<Power, Long> {
+	
+	public Power findPowerByName(String name);
+
+}

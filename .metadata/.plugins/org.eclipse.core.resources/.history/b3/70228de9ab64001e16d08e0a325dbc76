@@ -1,0 +1,103 @@
+package com.actividad.superhero.entity.models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tienen")
+public class Tienen  {
+	
+	@EmbeddedId
+	SuperHeroKey id;
+	
+	@ManyToOne
+	@MapsId("idHero")
+	@JoinColumn(name = "id_hero")
+	SuperHero heroes ;
+	
+	@ManyToOne
+	@MapsId("idPower")
+	@JoinColumn(name = "id_power")
+	Power powers ;
+	
+	@JsonProperty("name_hero")
+    String nameHero;
+	
+	@JsonProperty("name_power")
+	String namePower;
+	
+	@Column(name="power_level")
+	long powerLevel;
+
+	public SuperHeroKey getId() {
+		return id;
+	}
+
+	public void setId(SuperHeroKey id) {
+		this.id = id;
+	}
+
+	public SuperHero getHeroes() {
+		return heroes;
+	}
+
+	public void setHeroes(SuperHero heroes) {
+		this.heroes = heroes;
+	}
+	
+	public Power getPowers() {
+		return powers;
+	}
+
+	public void setPowers(Power powers) {
+		this.powers = powers;
+	}
+	
+	public String getNameHero() {
+		return nameHero;
+	}
+
+	public void setNameHero(String nameHero) {
+		this.nameHero = nameHero;
+	}
+
+	public String getNamePower() {
+		return namePower;
+	}
+
+	public void setNamePower(String namePower) {
+		this.namePower = namePower;
+	}
+
+	public long getPowerLevel() {
+		return powerLevel;
+	}
+
+	public void setPowerLevel(long powerLevel) {
+		this.powerLevel = powerLevel;
+	}
+	
+	
+	
+	
+	
+	public Tienen(SuperHeroKey id, SuperHero heroes, Power powers, long powerLevel) {
+		super();
+		this.id = id;
+		this.heroes = heroes;
+		this.powers = powers;
+		this.powerLevel = powerLevel;
+	}
+
+	public Tienen() {
+	}
+
+	
+}

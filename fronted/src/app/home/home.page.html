@@ -1,0 +1,24 @@
+<div class="container-form-card">
+  <div class="form-container">
+    <app-form
+      [heroCardName]="heroCardName"
+      [heroCardNamePower]="heroCardPowerName"
+      [heroCardPowerLevel]="heroCardPowerLevel"
+      [selector]="selector"
+      (hero)="addNewHero()"
+      (cancel)="cancelModify($event)"
+    ></app-form>
+  </div>
+  <div id="container">
+    <app-card
+      *ngFor="let hero of heros"
+      [id]="hero.id"
+      [name]="hero.name"
+      (heroClickedToRemove)="deleteOneHero($event)"
+      (heroClickedToUpdate)="saveInfoCard($event)"
+      (clickButtonUpdate)="saveSelector($event)"
+      (powerRemoveToHero)="deletePowerToHero()"
+      s
+    ></app-card>
+  </div>
+</div>

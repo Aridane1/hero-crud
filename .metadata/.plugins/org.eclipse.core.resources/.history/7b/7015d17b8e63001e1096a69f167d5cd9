@@ -1,0 +1,14 @@
+package com.actividad.superhero.entity.services;
+
+import java.util.List;
+
+import com.actividad.superhero.entity.models.SuperHeroKey;
+import com.actividad.superhero.entity.models.Tienen;
+
+public interface ITienenService {
+	public Tienen get(SuperHeroKey id);
+	public List<Tienen> getAll();
+	public void post(Tienen tienen);
+	public void put(SuperHeroKey id ,Tienen tienen);
+	public void delete(SuperHeroKey id);
+}

@@ -1,0 +1,87 @@
+package com.actividad.superhero.entity.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.actividad.superhero.entity.dao.IPowerDao;
+import com.actividad.superhero.entity.dao.ISuperHeroDao;
+import com.actividad.superhero.entity.dao.ITieneDao;
+import com.actividad.superhero.entity.models.Power;
+import com.actividad.superhero.entity.models.SuperHero;
+import com.actividad.superhero.entity.models.SuperHeroKey;
+import com.actividad.superhero.entity.models.Tienen;
+
+@Service
+public class TienenServiceImpl implements ITienenService{
+	
+	@Autowired
+	private ITieneDao tieneDao;
+	@Autowired
+	IPowerDao powerDao;
+	@Autowired
+	ISuperHeroDao superHeroDao;
+
+	@Override
+	public Tienen get(SuperHeroKey id) {
+		// TODO Auto-generated method stub
+		return tieneDao.findById(id).get();
+	}
+
+	@Override
+	public List<Tienen> getAll() {
+		// TODO Auto-generated method stub
+		return (List<Tienen>) tieneDao.findAll();
+	}
+
+	@Override
+	public void post(Tienen tienen,String nameHero,String namePower,long powerLevel) {
+	   
+	    SuperHero foundHero = superHeroDao.findSuperHeroByName(nameHero);
+	    Power foundPower = powerDao.findPowerByName(namePower);
+
+	    if (foundPower != null || !namePower.equals("") || foundHero != null || !nameHero.equals("")) {
+
+
+	        SuperHeroKey id = new SuperHeroKey(foundHero.getId(), foundPower.getId());
+
+	        tienen.setId(id);
+	        tienen.setPowerLevel(powerLevel);
+	        tienen.setHeroes(foundHero);
+	        tienen.setPowers(foundPower);
+
+	        tieneDao.save(tienen);
+	    }
+	}
+	
+	@Override
+	public void put(Tienen tienen) {
+		// TODO Auto-generated method stub
+		String nameHero = tienen.getNameHero();
+		String namePower = tienen.getNamePower();
+		long powerLevel = tienen.getPowerLevel();
+		SuperHero foundHero = superHeroDao.findSuperHeroByName(nameHero);
+
+		Power foundPower = powerDao.findPowerByName(namePower);
+		
+		SuperHeroKey id = new SuperHeroKey(foundHero.getId(),foundPower.getId());
+		System.out.println(nameHero+" "+namePower+" "+powerLevel);
+		tieneDao.findById(id).ifPresent((x)->{
+				x.setPowerLevel(powerLevel);
+				System.out.println(x.getPowerLevel());
+				tieneDao.save(x);
+		});
+	}
+	@Override
+	public void delete(SuperHeroKey id) {
+		// TODO Auto-generated method stub
+		tieneDao.deleteById(id);
+	}
+
+
+
+
+
+
+}

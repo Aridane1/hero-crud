@@ -1,0 +1,17 @@
+package com.actividad.superhero.entity.models;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
+@Embeddable
+public class SuperHeroKey implements Serializable{
+
+    @Column(name = "id_hero")
+    long idHero;
+    
+    @Column(name = "id_power")
+    long idPower;
+    
+}

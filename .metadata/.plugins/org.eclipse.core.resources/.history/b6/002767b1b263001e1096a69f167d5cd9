@@ -1,0 +1,12 @@
+package com.actividad.superhero.entity.dao;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.actividad.superhero.entity.models.SuperHeroKey;
+import com.actividad.superhero.entity.models.Tienen;
+
+public interface ITieneDao extends CrudRepository<Tienen, SuperHeroKey> {
+
+	public List<Tienen> findPowerByHero(long id);
+	
+}

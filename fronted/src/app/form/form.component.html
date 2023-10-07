@@ -1,0 +1,108 @@
+<!-- <form>
+  <label>Id Hero:</label>
+  <input
+    type="text"
+    name="id-hero"
+    id="id-hero"
+    placeholder="Introduzca el nombre"
+    #idHero
+  />
+  <label>Id Power:</label>
+  <input
+    type="text"
+    name="id-ower"
+    id="id-power"
+    placeholder="Introduzca el poder"
+    #idPower
+  />
+
+  <label>Nombre del Heroe:</label>
+  <input
+    type="text"
+    name="name-hero"
+    id="hero"
+    placeholder="Introduzca el nombre"
+    #nameHero
+  />
+  <label>El correspondiente poder:</label>
+  <input
+    type="text"
+    name="name-power"
+    id="power"
+    placeholder="Introduzca el poder"
+    #namePower
+  />
+  <input type="range" />
+  <button
+    type="button"
+    (click)="add({ name: nameHero.value }, { name: namePower.value })"
+  >
+    Add
+  </button>
+  <button
+    type="button"
+    (click)="
+      update(
+        { id: parseInt(idHero.value), name: nameHero.value },
+        { id: parseInt(idPower.value), name: namePower.value }
+      )
+    "
+  >
+    Add
+  </button>
+</form> -->
+
+<form [formGroup]="ionicForm" (ngSubmit)="add()">
+  <ion-item>
+    <ion-input
+      type="text"
+      minlenght="2"
+      maxlength="15"
+      [counter]="true"
+      [clearInput]="true"
+      label="Nombre del Heroe:"
+      labelPlacement="floating"
+      formControlName="nameHero"
+      value="{{ heroCardName }}"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      type="text"
+      minlenght="3"
+      maxlength="15"
+      [counter]="true"
+      [clearInput]="true"
+      label="Nombre del Poder:"
+      labelPlacement="floating"
+      formControlName="namePower"
+      value="{{ heroCardNamePower }}"
+    ></ion-input>
+  </ion-item>
+  <div>
+    <ion-range
+      aria-label="Range with knob events"
+      (ionKnobMoveEnd)="onIonKnobMoveEnd($event)"
+      formControlName="powerLevel"
+      [max]="500"
+      [pin]="true"
+      value="{{ heroCardPowerLevel }}"
+    ></ion-range>
+  </div>
+
+  <div class="container-btn">
+    <ion-button color="success" type="submit" *ngIf="!selector"
+      >Añadir</ion-button
+    >
+    <ion-button
+      type="button"
+      color="success"
+      *ngIf="selector"
+      (click)="modify()"
+      >Modificar</ion-button
+    >
+    <ion-button color="danger" *ngIf="selector" (click)="cancelModify()"
+      >Cancelar Modificacion</ion-button
+    >
+  </div>
+</form>

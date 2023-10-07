@@ -1,0 +1,60 @@
+package com.actividad.superhero.entity.models;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="heroes")
+public class SuperHero implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+    @Column(name = "name",length = 45)
+    private String name;
+	
+    @Column(name = "power", length = 45)
+    private String power;
+	
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getPower() {
+		return power;
+	}
+	
+	public void setPower(String power) {
+		this.power = power;
+	}
+	
+	public SuperHero(String name, String power) {
+		super();
+		this.name = name;
+		this.power = power;
+	}
+	
+	public SuperHero() {
+	}
+	
+}

@@ -1,0 +1,15 @@
+package com.actividad.superhero.entity.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+import com.actividad.superhero.entity.models.SuperHeroKey;
+import com.actividad.superhero.entity.models.Tienen;
+
+public interface ITieneDao extends CrudRepository<Tienen, Long> {
+
+	
+}

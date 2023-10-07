@@ -1,0 +1,8 @@
+package com.actividad.superhero.entity.models;
+
+
+
+
+public class Power {
+
+}

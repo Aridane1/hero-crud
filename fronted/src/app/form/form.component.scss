@@ -1,0 +1,12 @@
+form{
+    top: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.container-btn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
